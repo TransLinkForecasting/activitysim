@@ -1067,7 +1067,7 @@ def vectorize_subtour_scheduling(
 
     timetable_window_id_col = "parent_tour_id"
     tour_owner_id_col = "parent_tour_id"
-    logsum_tour_purpose = None  # FIXME logsums not currently supported
+    logsum_tour_purpose = "atwork" if compute_logsums else None  # FIXME logsums not currently supported - temp fix by TL
 
     # timetable with a window for each parent tour
     parent_tour_windows = tt.create_timetable_windows(parent_tours, alts)
