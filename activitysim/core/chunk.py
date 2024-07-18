@@ -1234,8 +1234,6 @@ def adaptive_chunked_choosers(
 
     num_choosers = len(choosers.index)
 
-    num_choosers = len(choosers.index)
-
     if state.settings.chunk_training_mode == MODE_EXPLICIT:
         if explicit_chunk_size < 1:
             chunk_size = math.ceil(num_choosers * explicit_chunk_size)
