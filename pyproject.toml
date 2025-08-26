@@ -102,9 +102,9 @@ convention = "numpy"
 dev = [
     "altair",
     "autodoc_pydantic",
-    "asv",  # for benchmarking
+    "asv", # for benchmarking
     "black==22.12.0,<23",
-    "bump2version",  # for making a release
+    "bump2version", # for making a release
     "coveralls==3.3.1",
     "dask==2023.11",
     "descartes",
@@ -112,14 +112,14 @@ dev = [
     "fsspec",
     "geopandas",
     "gh",
-    "ipykernel",  # so this env will appear in jupyter as a selection
+    "ipykernel", # so this env will appear in jupyter as a selection
     "isort==5.12.0",
     "jupyter-book",
     "jupyterlab",
     "larch>=5.7",
     "matplotlib",
     "myst-nb",
-    "myst-parser",  # allows markdown in sphinx
+    "myst-parser", # allows markdown in sphinx
     "nbconvert",
     "nbformat",
     "nbmake==1.4.6",
@@ -133,11 +133,11 @@ dev = [
     "pytest-cov",
     "pytest-regressions",
     "rich==13.3",
-    "ruby",  # for benchmarking pre-commit hooks
+    "ruby", # for benchmarking pre-commit hooks
     "ruff",
     "setuptools_scm",
     "simwrapper > 1.7",
-    "snakeviz",  # for profiling
+    "snakeviz", # for profiling
     "sphinx==6.1",
     "sphinx-argparse",
     "sphinx-autosummary-accessors",
@@ -147,7 +147,8 @@ dev = [
     "sphinx-argparse==0.4",
     "xmle",
     "zarr>=2,<3",
-    "zstandard"
+    "zstandard",
+    "tlpytools>=0.1.6.1",
 ]
 github-action = [
     "black==22.12.0",
