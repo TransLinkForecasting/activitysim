@@ -32,7 +32,7 @@
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
@@ -54,7 +54,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://translinkforecasting.github.io/activitysim/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1000.dev3471.ge345f9774';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1000.dev3482.g5e781a705';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -63,8 +63,8 @@
     <link rel="prev" title="Documentation" href="build-docs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1000.dev3471.ge345f9774" />
-    <meta name="docbuild:last-update" content="Aug 25, 2025"/>
+  <meta name="docsearch:version" content="1000.dev3482.g5e781a705" />
+    <meta name="docbuild:last-update" content="Oct 22, 2025"/>
   </head>
   
   
@@ -442,6 +442,22 @@
 major new features that may require modifications to existing model configurations
 or code to utilize, as well as breaking changes that may cause existing model
 configurations or code to fail to run correctly.</p>
+<section id="v1-4">
+<h2>v1.4<a class="headerlink" href="#v1-4" title="Permalink to this heading">#</a></h2>
+<section id="improved-estimation-mode">
+<h3>Improved Estimation Mode<a class="headerlink" href="#improved-estimation-mode" title="Permalink to this heading">#</a></h3>
+<p>Version 1.4 includes several improvements to the estimation mode, including:</p>
+<ul class="simple">
+<li><p>The ability to run estimation mode in parallel, which can significantly
+speed up the estimation process for large models.</p></li>
+<li><p>The ability to modify the model specification and coefficients file(s) for
+the estimated submodels without re-running ActivitySim, which allows for more
+flexibility in the estimation process.</p></li>
+<li><p>Other improvements to the estimation mode workflow, including better error
+handling, logging, and model evaluation tools.</p></li>
+</ul>
+</section>
+</section>
 <section id="v1-3">
 <h2>v1.3<a class="headerlink" href="#v1-3" title="Permalink to this heading">#</a></h2>
 <section id="new-canonical-examples">
@@ -734,6 +750,10 @@ development cycle, including:</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-4">v1.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#improved-estimation-mode">Improved Estimation Mode</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-3">v1.3</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-canonical-examples">New Canonical Examples</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logging">Logging</a></li>
@@ -783,7 +803,7 @@ development cycle, including:</p>
       
         <div class="footer-item"><!-- This will display the version of the docs -->
 <p class="last-updated">
-ActivitySim 1000.dev3471+ge345f9774, documentation last updated Aug 25, 2025.<br/>
+ActivitySim 1000.dev3482+g5e781a705, documentation last updated Oct 22, 2025.<br/>
 </p></div>
       
         <div class="footer-item">
