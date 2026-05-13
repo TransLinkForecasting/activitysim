@@ -384,6 +384,7 @@ def trip_mode_choice(
     locals_dict.update(constants)
     simulate.set_skim_wrapper_targets(trips_merged, skims)
     locals_dict.update(skims)
+    locals_dict.update({"network_los": network_los})
     locals_dict["timeframe"] = "trip"
     expressions.annotate_tables(
         state,
