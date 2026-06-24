@@ -132,31 +132,6 @@ def setup_skims(
             }
         )
 
-    if network_los.zone_system == los.THREE_ZONE:
-        # fixme - is this a lightweight object?
-        tvpb = network_los.tvpb
-
-        tvpb_logsum_odt = tvpb.wrap_logsum(
-            orig_key=orig_col_name,
-            dest_key=dest_col_name,
-            tod_key="out_period",
-            segment_key="demographic_segment",
-            trace_label=None,
-            tag="tvpb_logsum_odt",
-        )
-        tvpb_logsum_dot = tvpb.wrap_logsum(
-            orig_key=dest_col_name,
-            dest_key=orig_col_name,
-            tod_key="in_period",
-            segment_key="demographic_segment",
-            trace_label=None,
-            tag="tvpb_logsum_dot",
-        )
-
-        skims.update(
-            {"tvpb_logsum_odt": tvpb_logsum_odt, "tvpb_logsum_dot": tvpb_logsum_dot}
-        )
-
     # add time periods to skims if requested
     if add_periods:
         choosers["out_period"] = network_los.skim_time_period_label(
@@ -357,13 +332,8 @@ def compute_location_choice_logsums(
         include_pnr_skims=logsum_settings.include_pnr_for_logsums,
         trace_label=trace_label,
     )
-    locals_dict.update(skims)
 
-    # TVPB constants can appear in expressions
-    if (network_los.zone_system == los.THREE_ZONE) & logsum_settings.use_TVPB_constants:
-        locals_dict.update(
-            network_los.setting("TVPB_SETTINGS.tour_mode_choice.CONSTANTS")
-        )
+    locals_dict.update(skims)
 
     # - run preprocessor to annotate choosers
     # allow specification of alternate preprocessor for nontour choosers
