@@ -68,11 +68,11 @@ def find_nearest_accessibility_zone(
         return oz, zones_df.index[_idx]
 
     unique_origin_zones = choosers[origin_col].unique()
-    accessibility_zones = list(set(accessibility_df[origin_col]))
+    accessibility_zones = sorted(set(accessibility_df[origin_col]))
 
     # First find any choosers zones that are missing from accessibility zones
-    matched_zones = list(set(unique_origin_zones).intersection(accessibility_zones))
-    unmatched_zones = list(set(unique_origin_zones).difference(accessibility_zones))
+    matched_zones = sorted(set(unique_origin_zones).intersection(accessibility_zones))
+    unmatched_zones = sorted(set(unique_origin_zones).difference(accessibility_zones))
 
     # Store choosers index to ensure consistency
     _idx = choosers.index
