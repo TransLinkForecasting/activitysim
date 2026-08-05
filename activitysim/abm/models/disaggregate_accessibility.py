@@ -308,12 +308,12 @@ class ProtoPop:
         if method and method == "full":
             sample_idx = self.land_use.index
         elif method and method.lower() == "uniform":
-            sample_idx = sorted(random.sample(sorted(self.land_use.index), n_samples))
+            sample_idx = sorted(random.Random(self.seed).sample(sorted(self.land_use.index), n_samples))
         elif method and method.lower() == "uniform-taz":
             # Randomly select one MAZ per TAZ by randomizing the index and then select the first MAZ in each TAZ
             # Then truncate the sampled indices by N samples and sort it
             sample_idx = (
-                self.land_use.sample(frac=1)
+                self.land_use.sample(frac=1, random_state=self.seed)
                 .reset_index()
                 .groupby("TAZ")[id_col]
                 .first()
