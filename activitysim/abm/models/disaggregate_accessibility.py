@@ -768,11 +768,18 @@ def get_disaggregate_logsums(
         state, "disaggregate_accessibility.yaml"
     )
 
-    for model_name in [
+    location_models = [
         "workplace_location",
         "school_location",
-        "non_mandatory_tour_destination",
-    ]:
+    ]
+
+    tour_models = {
+        "non_mandatory_tour_destination": "non_mandatory",
+        "joint_tour_destination": "joint",
+        "atwork_subtour_destination": "atwork",
+    }
+
+    for model_name in [*location_models, *tour_models]:
         trace_label = tracing.extend_trace_label(model_name, "accessibilities")
         print(f"Running model {trace_label}")
 
@@ -803,13 +810,19 @@ def get_disaggregate_logsums(
             suffixes.insert(0, str(model_settings.LOGSUM_SETTINGS))
             model_settings.LOGSUM_SETTINGS = " ".join(suffixes)
 
-        if model_name != "non_mandatory_tour_destination":
+        if model_name in location_models:
             spc = shadow_pricing.load_shadow_price_calculator(state, model_settings)
             # explicitly turning off shadow pricing for disaggregate accessibilities
             spc.use_shadow_pricing = False
             # filter to only workers or students
             chooser_filter_column = model_settings.CHOOSER_FILTER_COLUMN_NAME
             choosers = persons_merged[persons_merged[chooser_filter_column]]
+
+            if choosers.empty:
+                logger.info(
+                    f"{model_name} skipped: no eligible proto persons (filter column {chooser_filter_column})"
+                )
+                continue
 
             # run location choice and return logsums
             _logsums, _ = location_choice.run_location_choice(
@@ -836,7 +849,18 @@ def get_disaggregate_logsums(
 
         else:
             tours = state.get_dataframe("proto_tours")
-            tours = tours[tours.tour_category == "non_mandatory"]
+            tours = tours[tours.tour_category == tour_models[model_name]]
+
+            if tours.empty:
+                logger.info(
+                    f"{model_name} skipped: no eligible proto tours (tour_category {tour_models[model_name]})"
+                )
+                continue
+
+            if model_name == "atwork_subtour_destination":
+                # set the workplace location as the home zone for the atwork subtour destination choice model
+                # this means that the output atwork subtour destination logsums should be merged on the workplace_zone_id
+                persons_merged["workplace_zone_id"] = persons_merged["home_zone_id"]
 
             _logsums, _ = tour_destination.run_tour_destination(
                 state,
@@ -912,19 +936,24 @@ def compute_disaggregate_accessibility(
     )
     logsums = {k + "_accessibility": v for k, v in logsums.items()}
 
-    # Combined accessibility table
-    # Setup dict for fixed location accessibilities
+    # Combine person-level location and tour-destination accessibility results.
+    # Tour results are pivoted by purpose so that multiple tour categories or
+    # purposes for the same person do not duplicate rows in the final table.
     access_list = []
     for k, df in logsums.items():
-        if "non_mandatory_tour_destination" in k:
-            # cast non-mandatory purposes to wide
-            df = pd.pivot(
-                df,
+        if "tour_destination" in k:
+            model_name = k.removesuffix("_accessibility")
+            column_prefix = {
+                "non_mandatory_tour_destination": "",
+                "joint_tour_destination": "joint_",
+                "atwork_subtour_destination": "atwork_",
+            }[model_name]
+            df = df.pivot_table(
                 index=["proto_household_id", "proto_person_id"],
                 columns="tour_type",
                 values="logsums",
             )
-            df.columns = ["_".join([str(x), "accessibility"]) for x in df.columns]
+            df.columns = [f"{column_prefix}{purpose}_accessibility" for purpose in df]
             access_list.append(df)
         else:
             access_list.append(
