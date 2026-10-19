@@ -50,11 +50,13 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/design-tabs.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dev-guide/using-sharrow';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://translinkforecasting.github.io/activitysim/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1000.dev3509.g3bcc811bc';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1000.dev3530.g26382c34d';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -64,8 +66,8 @@
     <link rel="prev" title="cached_object" href="_generated/activitysim.core.workflow.cached_object.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1000.dev3509.g3bcc811bc" />
-    <meta name="docbuild:last-update" content="Jun 23, 2026"/>
+  <meta name="docsearch:version" content="1000.dev3530.g26382c34d" />
+    <meta name="docbuild:last-update" content="Oct 19, 2026"/>
   </head>
   
   
@@ -356,6 +358,7 @@
 <li class="toctree-l2"><a class="reference internal" href="components/trip_destination.html">Trip Destination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components/work_from_home.html">Work from Home</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components/work_location_choice.html">Work Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/park_and_ride_lot_choice.html">Park-and-Ride Lot Choice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components/tour_mode_choice.html">Tour Mode Choice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components/atwork_subtour_frequency.html">At-work Subtours Frequency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="components/atwork_subtour_destination.html">At-work Subtours Destination Choice</a></li>
@@ -373,6 +376,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explicit-error-terms.html">Explicit Error Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampling-methods.html">Sampling Methods for Interaction Sample</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build-docs.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Change Log</a></li>
@@ -436,7 +441,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="using-sharrow">
+  <section class="tex2jax_ignore mathjax_ignore" id="using-sharrow">
 <h1>Using Sharrow<a class="headerlink" href="#using-sharrow" title="Permalink to this heading">#</a></h1>
 <p>This page will walk through an exercise of running a model with <code class="docutils literal notranslate"><span class="pre">sharrow</span></code>.</p>
 <section id="how-it-works">
@@ -539,7 +544,9 @@ decoded in various output files.  Generally, for columns that are fully populate
 with zone id’s (e.g. tour and trip ends) we can apply the <code class="docutils literal notranslate"><span class="pre">decode_columns</span></code> settings
 to reverse the mapping and restore the nominal zone id’s globally for the entire
 column of data.  For columns where there is some missing data flagged by negative
-values, the “nonnegative” filter is prepended to the instruction.</p>
+values, the “nonnegative” filter is prepended to the instruction. If the column
+may also contain nulls, use “nullable_nonnegative” to leave those values
+unchanged while decoding the non-negative indexes.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">output_tables</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">include</span>
 <span class="w">  </span><span class="nt">tables</span><span class="p">:</span>
@@ -553,7 +560,7 @@ values, the “nonnegative” filter is prepended to the instruction.</p>
 <span class="w">      </span><span class="nt">decode_columns</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">home_zone_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">land_use.zone_id</span>
 <span class="w">        </span><span class="nt">school_zone_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nonnegative | land_use.zone_id</span>
-<span class="w">        </span><span class="nt">workplace_zone_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nonnegative | land_use.zone_id</span>
+<span class="w">        </span><span class="nt">workplace_zone_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nullable_nonnegative | land_use.zone_id</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tablename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tours</span>
 <span class="w">      </span><span class="nt">decode_columns</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">land_use.zone_id</span>
@@ -849,9 +856,9 @@ RAM and can still express any value (to two decimal point
 precision) up to positive or negative 327.68.  If the lowest
 values in that range are never needed, it can also be shifted,
 moving both the bottom and top limits by a fixed amount. Then,
-for a particular scale $\mu$ and shift $\xi$ (stored in metadata),
-from any array element $i$ the implied (original) value $x$
-can quickly be recovered by evaluating $(i / \mu) - \xi$.</p>
+for a particular scale <span class="math notranslate nohighlight">\(\mu\)</span> and shift <span class="math notranslate nohighlight">\(\xi\)</span> (stored in metadata),
+from any array element <span class="math notranslate nohighlight">\(i\)</span> the implied (original) value <span class="math notranslate nohighlight">\(x\)</span>
+can quickly be recovered by evaluating <span class="math notranslate nohighlight">\((i / \mu) - \xi\)</span>.</p>
 <p>Fixed point digital encoding can be applied to matrix tables in the skims
 using options in the <code class="docutils literal notranslate"><span class="pre">network_los.yaml</span></code> settings file.  Making transformations
 currently also requires shifting the data from OMX to ZARR file formats;
@@ -1134,7 +1141,7 @@ see <a class="reference internal" href="#performance-considerations">Performance
       
         <div class="footer-item"><!-- This will display the version of the docs -->
 <p class="last-updated">
-ActivitySim 1000.dev3509+g3bcc811bc, documentation last updated Jun 23, 2026.<br/>
+ActivitySim 1000.dev3530+g26382c34d, documentation last updated Oct 19, 2026.<br/>
 </p></div>
       
         <div class="footer-item">

@@ -53,7 +53,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://translinkforecasting.github.io/activitysim/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1000.dev3509.g3bcc811bc';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1000.dev3530.g26382c34d';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -61,8 +61,8 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1000.dev3509.g3bcc811bc" />
-    <meta name="docbuild:last-update" content="Jun 23, 2026"/>
+  <meta name="docsearch:version" content="1000.dev3530.g26382c34d" />
+    <meta name="docbuild:last-update" content="Oct 19, 2026"/>
   </head>
   
   
@@ -365,6 +365,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.html#activitysim.core.skim_dict_factory.AbstractSkimFactory">AbstractSkimFactory (class in activitysim.core.skim_dict_factory)</a>
 </li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.ACCEPTED_TOLERANCE">ACCEPTED_TOLERANCE (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.access.html#activitysim.core.workflow.State.access">access() (activitysim.core.workflow.State method)</a>
 </li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.OutputTables.html#activitysim.core.configuration.OutputTables.action">action (activitysim.core.configuration.OutputTables attribute)</a>
@@ -639,6 +641,8 @@
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.run.all.html#activitysim.core.workflow.State.run.all">all() (activitysim.core.workflow.State.run method)</a>
 </li>
+      <li><a href="core.html#activitysim.core.mp_tasks.allocate_park_and_ride_lot_choice_buffers">allocate_park_and_ride_lot_choice_buffers() (in module activitysim.core.mp_tasks)</a>
+</li>
       <li><a href="core.html#activitysim.core.mp_tasks.allocate_shared_shadow_pricing_buffers">allocate_shared_shadow_pricing_buffers() (in module activitysim.core.mp_tasks)</a>
 </li>
       <li><a href="core.html#activitysim.core.mp_tasks.allocate_shared_shadow_pricing_buffers_choice">allocate_shared_shadow_pricing_buffers_choice() (in module activitysim.core.mp_tasks)</a>
@@ -694,6 +698,8 @@
       <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.alts_preprocessor">alts_preprocessor (activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
 
       <ul>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.alts_preprocessor">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.alts_preprocessor">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/school_escorting.html#activitysim.abm.models.school_escorting.SchoolEscortSettings.alts_preprocessor">(activitysim.abm.models.school_escorting.SchoolEscortSettings attribute)</a>
@@ -723,6 +729,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.alts_preprocessor_simulate">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
       </ul></li>
+      <li><a href="core.html#activitysim.core.logit.AltsContext">AltsContext (class in activitysim.core.logit)</a>
+</li>
       <li><a href="dev-guide/components/atwork_subtour_destination.html#activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings.annotate_households">annotate_households (activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings attribute)</a>
 
       <ul>
@@ -753,6 +761,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.annotate_households">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.annotate_households">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_households">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.annotate_households">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
@@ -817,6 +827,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.annotate_persons">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.annotate_persons">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_persons">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.annotate_persons">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
@@ -884,6 +896,8 @@
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.annotate_tours">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
 </li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_tours">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.annotate_tours">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/school_escorting.html#activitysim.abm.models.school_escorting.SchoolEscortSettings.annotate_tours">(activitysim.abm.models.school_escorting.SchoolEscortSettings attribute)</a>
@@ -943,6 +957,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.annotate_trips">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.annotate_trips">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_trips">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.annotate_trips">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
@@ -1011,6 +1027,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.annotate_vehicles">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.annotate_vehicles">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_vehicles">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.annotate_vehicles">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
@@ -1097,10 +1115,12 @@
 </li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.benchmarking">benchmarking (activitysim.core.configuration.Settings attribute)</a>
 </li>
-      <li><a href="users-guide/_generated/activitysim.core.configuration.DigitalEncoding.html#activitysim.core.configuration.DigitalEncoding.bitwidth">bitwidth (activitysim.core.configuration.DigitalEncoding attribute)</a>
+      <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.bias_location_choice_logsums_for_poisson_sampling">bias_location_choice_logsums_for_poisson_sampling (activitysim.core.configuration.Settings attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users-guide/_generated/activitysim.core.configuration.DigitalEncoding.html#activitysim.core.configuration.DigitalEncoding.bitwidth">bitwidth (activitysim.core.configuration.DigitalEncoding attribute)</a>
+</li>
       <li><a href="dev-guide/components/shadow_pricing.html#activitysim.abm.tables.shadow_pricing.buffers_for_shadow_pricing">buffers_for_shadow_pricing() (in module activitysim.abm.tables.shadow_pricing)</a>
 </li>
       <li><a href="dev-guide/components/shadow_pricing.html#activitysim.abm.tables.shadow_pricing.buffers_for_shadow_pricing_choice">buffers_for_shadow_pricing_choice() (in module activitysim.abm.tables.shadow_pricing)</a>
@@ -1183,6 +1203,8 @@
         <li><a href="dev-guide/components/work_from_home.html#activitysim.abm.models.work_from_home.WorkFromHomeSettings.CHOOSER_FILTER_COLUMN_NAME">(activitysim.abm.models.work_from_home.WorkFromHomeSettings attribute)</a>
 </li>
       </ul></li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.CHOOSER_FILTER_EXPR">CHOOSER_FILTER_EXPR (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
       <li><a href="dev-guide/components/atwork_subtour_destination.html#activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings.CHOOSER_ID_COLUMN">CHOOSER_ID_COLUMN (activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings attribute)</a>
 
       <ul>
@@ -1318,6 +1340,8 @@
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.COEFFICIENTS">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
 </li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.COEFFICIENTS">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.COEFFICIENTS">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/school_escorting.html#activitysim.abm.models.school_escorting.SchoolEscortSettings.COEFFICIENTS">(activitysim.abm.models.school_escorting.SchoolEscortSettings attribute)</a>
@@ -1379,6 +1403,8 @@
 </li>
       <li><a href="core.html#activitysim.core.simulate.compute_nested_probabilities">compute_nested_probabilities() (in module activitysim.core.simulate)</a>
 </li>
+      <li><a href="core.html#activitysim.core.simulate.compute_nested_utilities">compute_nested_utilities() (in module activitysim.core.simulate)</a>
+</li>
       <li><a href="dev-guide/components/trip_destination.html#activitysim.abm.models.trip_destination.compute_ood_logsums">compute_ood_logsums() (in module activitysim.abm.models.trip_destination)</a>
 </li>
       <li><a href="dev-guide/components/atwork_subtour_destination.html#activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings.compute_settings">compute_settings (activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings attribute)</a>
@@ -1393,6 +1419,8 @@
         <li><a href="dev-guide/components/auto_ownership.html#activitysim.abm.models.auto_ownership.AutoOwnershipSettings.compute_settings">(activitysim.abm.models.auto_ownership.AutoOwnershipSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/cdap.html#activitysim.abm.models.cdap.CdapSettings.compute_settings">(activitysim.abm.models.cdap.CdapSettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.compute_settings">(activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/free_parking.html#activitysim.abm.models.free_parking.FreeParkingSettings.compute_settings">(activitysim.abm.models.free_parking.FreeParkingSettings attribute)</a>
 </li>
@@ -1411,6 +1439,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.compute_settings">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.compute_settings">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.compute_settings">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.compute_settings">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
@@ -1496,6 +1526,8 @@
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.CONSTANTS">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
 </li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.CONSTANTS">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.CONSTANTS">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/school_escorting.html#activitysim.abm.models.school_escorting.SchoolEscortSettings.CONSTANTS">(activitysim.abm.models.school_escorting.SchoolEscortSettings attribute)</a>
@@ -1562,6 +1594,8 @@
       <li><a href="core.html#activitysim.core.timetable.create_timetable_windows">create_timetable_windows() (in module activitysim.core.timetable)</a>
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.current_model_name.html#activitysim.core.workflow.State.current_model_name">current_model_name (activitysim.core.workflow.State property)</a>
+</li>
+      <li><a href="core.html#activitysim.core.simulate.CustomChooser_T">CustomChooser_T (in module activitysim.core.simulate)</a>
 </li>
       <li><a href="estimation.html#activitysim.estimation.larch.general.cv_to_ca">cv_to_ca() (in module activitysim.estimation.larch.general)</a>, <a href="users-guide/estimation-mode/larch-api.html#activitysim.estimation.larch.general.cv_to_ca">[1]</a>, <a href="users-guide/model_dev.html#activitysim.estimation.larch.general.cv_to_ca">[2]</a>
 </li>
@@ -1779,8 +1813,6 @@
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.existing_table_names.html#activitysim.core.workflow.State.existing_table_names">existing_table_names (activitysim.core.workflow.State property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.existing_table_status.html#activitysim.core.workflow.State.existing_table_status">existing_table_status (activitysim.core.workflow.State property)</a>
 </li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.FileSystem.html#activitysim.core.configuration.FileSystem.expand_input_file_list">expand_input_file_list() (activitysim.core.configuration.FileSystem method)</a>
@@ -1789,6 +1821,8 @@
 
       <ul>
         <li><a href="dev-guide/components/atwork_subtour_destination.html#activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings.explicit_chunk">(activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.explicit_chunk">(activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/atwork_subtour_scheduling.html#activitysim.abm.models.atwork_subtour_scheduling.TourSchedulingSettings.explicit_chunk">(activitysim.abm.models.atwork_subtour_scheduling.TourSchedulingSettings attribute)</a>
 </li>
@@ -1804,13 +1838,25 @@
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.explicit_chunk">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
 </li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.explicit_chunk">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.explicit_chunk">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/school_escorting.html#activitysim.abm.models.school_escorting.SchoolEscortSettings.explicit_chunk">(activitysim.abm.models.school_escorting.SchoolEscortSettings attribute)</a>
 </li>
+        <li><a href="dev-guide/components/tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.explicit_chunk">(activitysim.abm.models.tour_mode_choice.TourModeComponentSettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/trip_mode_choice.html#activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings.explicit_chunk">(activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/trip_scheduling_choice.html#activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings.explicit_chunk">(activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings attribute)</a>
+</li>
         <li><a href="dev-guide/components/vehicle_type_choice.html#activitysim.abm.models.vehicle_type_choice.VehicleTypeChoiceSettings.explicit_chunk">(activitysim.abm.models.vehicle_type_choice.VehicleTypeChoiceSettings attribute)</a>
 </li>
+        <li><a href="dev-guide/_generated/activitysim.core.configuration.logit.TemplatedLogitComponentSettings.html#activitysim.core.configuration.logit.TemplatedLogitComponentSettings.explicit_chunk">(activitysim.core.configuration.logit.TemplatedLogitComponentSettings attribute)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="estimation.html#activitysim.estimation.larch.general.explicit_value_parameters">explicit_value_parameters() (in module activitysim.estimation.larch.general)</a>, <a href="users-guide/estimation-mode/larch-api.html#activitysim.estimation.larch.general.explicit_value_parameters">[1]</a>, <a href="users-guide/model_dev.html#activitysim.estimation.larch.general.explicit_value_parameters">[2]</a>
 </li>
       <li><a href="estimation.html#activitysim.estimation.larch.general.explicit_value_parameters_from_spec">explicit_value_parameters_from_spec() (in module activitysim.estimation.larch.general)</a>, <a href="users-guide/estimation-mode/larch-api.html#activitysim.estimation.larch.general.explicit_value_parameters_from_spec">[1]</a>, <a href="users-guide/model_dev.html#activitysim.estimation.larch.general.explicit_value_parameters_from_spec">[2]</a>
@@ -1979,10 +2025,10 @@
 </li>
       <li><a href="core.html#activitysim.core.los.Network_LOS.get_maz_to_taz_series">get_maz_to_taz_series() (activitysim.core.los.Network_LOS method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.html#activitysim.core.los.Network_LOS.get_mazpairs">get_mazpairs() (activitysim.core.los.Network_LOS method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.html#activitysim.core.config.get_model_constants">get_model_constants() (in module activitysim.core.config)</a>
 </li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.FileSystem.html#activitysim.core.configuration.FileSystem.get_output_dir">get_output_dir() (activitysim.core.configuration.FileSystem method)</a>
@@ -2053,6 +2099,12 @@
 </li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.FileSystem.html#activitysim.core.configuration.FileSystem.get_working_subdir">get_working_subdir() (activitysim.core.configuration.FileSystem method)</a>
 </li>
+      <li><a href="core.html#activitysim.core.random.SimpleChannel.gumbel_choice_positions_for_df">gumbel_choice_positions_for_df() (activitysim.core.random.SimpleChannel method)</a>
+</li>
+      <li><a href="core.html#activitysim.core.random.SimpleChannel.gumbel_for_df">gumbel_for_df() (activitysim.core.random.SimpleChannel method)</a>
+</li>
+      <li><a href="core.html#activitysim.core.random.SimpleChannel.gumbel_max_positions_for_df">gumbel_max_positions_for_df() (activitysim.core.random.SimpleChannel method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -2105,6 +2157,12 @@
 </li>
       <li><a href="dev-guide/components/school_escorting.html#activitysim.abm.models.school_escorting.SchoolEscortSettings.INBOUND_SPEC">INBOUND_SPEC (activitysim.abm.models.school_escorting.SchoolEscortSettings attribute)</a>
 </li>
+      <li><a href="dev-guide/components/atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.include_pnr_for_logsums">include_pnr_for_logsums (activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings attribute)</a>
+
+      <ul>
+        <li><a href="dev-guide/components/tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.include_pnr_for_logsums">(activitysim.abm.models.tour_mode_choice.TourModeComponentSettings attribute)</a>
+</li>
+      </ul></li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.InputTable.html#activitysim.core.configuration.InputTable.index_col">index_col (activitysim.core.configuration.InputTable attribute)</a>
 
       <ul>
@@ -2131,10 +2189,10 @@
 </li>
       <li><a href="users-guide/model_anatomy.html#index-2">input store</a>
 </li>
-      <li><a href="dev-guide/components/input_checker.html#activitysim.abm.models.input_checker.input_checker">input_checker() (in module activitysim.abm.models.input_checker)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dev-guide/components/input_checker.html#activitysim.abm.models.input_checker.input_checker">input_checker() (in module activitysim.abm.models.input_checker)</a>
+</li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.input_store">input_store (activitysim.core.configuration.Settings attribute)</a>
 </li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.input_table_list">input_table_list (activitysim.core.configuration.Settings attribute)</a>
@@ -2178,6 +2236,8 @@
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.is_table.html#activitysim.core.workflow.State.is_table">is_table() (activitysim.core.workflow.State method)</a>
 </li>
       <li><a href="dev-guide/components/vehicle_type_choice.html#activitysim.abm.models.vehicle_type_choice.iterate_vehicle_type_choice">iterate_vehicle_type_choice() (in module activitysim.abm.models.vehicle_type_choice)</a>
+</li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.ITERATE_WITH_TOUR_MODE_CHOICE">ITERATE_WITH_TOUR_MODE_CHOICE (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -2234,6 +2294,10 @@
       <li><a href="dev-guide/components/accessibility.html#activitysim.abm.models.accessibility.AccessibilitySettings.land_use_columns_orig">land_use_columns_orig (activitysim.abm.models.accessibility.AccessibilitySettings attribute)</a>
 </li>
       <li><a href="estimation.html#activitysim.estimation.larch.location_choice.LocationChoiceData.landuse">landuse (activitysim.estimation.larch.location_choice.LocationChoiceData attribute)</a>, <a href="users-guide/estimation-mode/larch-api.html#activitysim.estimation.larch.location_choice.LocationChoiceData.landuse">[1]</a>, <a href="users-guide/model_dev.html#activitysim.estimation.larch.location_choice.LocationChoiceData.landuse">[2]</a>
+</li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.LANDUSE_COL_FOR_PNR_ELIGIBLE_DEST">LANDUSE_COL_FOR_PNR_ELIGIBLE_DEST (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.LANDUSE_PNR_SPACES_COLUMN">LANDUSE_PNR_SPACES_COLUMN (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.checkpoint.last_checkpoint.html#activitysim.core.workflow.State.checkpoint.last_checkpoint">last_checkpoint (activitysim.core.workflow.State.checkpoint attribute)</a>
 </li>
@@ -2321,6 +2385,8 @@
         <li><a href="dev-guide/components/mandatory_tour_frequency.html#activitysim.abm.models.mandatory_tour_frequency.MandatoryTourFrequencySettings.LOGIT_TYPE">(activitysim.abm.models.mandatory_tour_frequency.MandatoryTourFrequencySettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.LOGIT_TYPE">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.LOGIT_TYPE">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.LOGIT_TYPE">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
@@ -2423,9 +2489,19 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.html#activitysim.core.logit.make_choices">make_choices() (in module activitysim.core.logit)</a>
 </li>
+      <li><a href="core.html#activitysim.core.logit.make_choices_explicit_error_term_mnl">make_choices_explicit_error_term_mnl() (in module activitysim.core.logit)</a>
+</li>
+      <li><a href="core.html#activitysim.core.logit.make_choices_explicit_error_term_nl">make_choices_explicit_error_term_nl() (in module activitysim.core.logit)</a>
+</li>
+      <li><a href="core.html#activitysim.core.logit.make_choices_utility_based">make_choices_utility_based() (in module activitysim.core.logit)</a>
+</li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.make_default.html#activitysim.core.workflow.State.make_default">make_default() (activitysim.core.workflow.State class method)</a>
 </li>
       <li><a href="core.html#activitysim.core.interaction_sample.make_sample_choices">make_sample_choices() (in module activitysim.core.interaction_sample)</a>
+</li>
+      <li><a href="core.html#activitysim.core.interaction_sample.make_sample_choices_eet">make_sample_choices_eet() (in module activitysim.core.interaction_sample)</a>
+</li>
+      <li><a href="core.html#activitysim.core.interaction_sample.make_sample_choices_poisson">make_sample_choices_poisson() (in module activitysim.core.interaction_sample)</a>
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.make_temp.html#activitysim.core.workflow.State.make_temp">make_temp() (activitysim.core.workflow.State class method)</a>
 </li>
@@ -2449,9 +2525,11 @@
         <li><a href="core.html#activitysim.core.skim_dictionary.SkimWrapper.max">(activitysim.core.skim_dictionary.SkimWrapper method)</a>
 </li>
       </ul></li>
-      <li><a href="dev-guide/components/trip_purpose_and_destination.html#activitysim.abm.models.trip_purpose_and_destination.TripPurposeAndDestinationSettings.MAX_ITERATIONS">MAX_ITERATIONS (activitysim.abm.models.trip_purpose_and_destination.TripPurposeAndDestinationSettings attribute)</a>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.MAX_ITERATIONS">MAX_ITERATIONS (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 
       <ul>
+        <li><a href="dev-guide/components/trip_purpose_and_destination.html#activitysim.abm.models.trip_purpose_and_destination.TripPurposeAndDestinationSettings.MAX_ITERATIONS">(activitysim.abm.models.trip_purpose_and_destination.TripPurposeAndDestinationSettings attribute)</a>
+</li>
         <li><a href="dev-guide/components/trip_scheduling_probabilistic.html#activitysim.abm.models.trip_scheduling.TripSchedulingSettings.MAX_ITERATIONS">(activitysim.abm.models.trip_scheduling.TripSchedulingSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/shadow_pricing.html#activitysim.abm.tables.shadow_pricing.ShadowPriceSettings.MAX_ITERATIONS">(activitysim.abm.tables.shadow_pricing.ShadowPriceSettings attribute)</a>
@@ -2513,6 +2591,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.MODEL_SELECTOR">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="estimation.html#activitysim.estimation.larch.location_choice.LocationChoiceData.model_selector">model_selector (activitysim.estimation.larch.location_choice.LocationChoiceData attribute)</a>, <a href="users-guide/estimation-mode/larch-api.html#activitysim.estimation.larch.location_choice.LocationChoiceData.model_selector">[1]</a>, <a href="users-guide/model_dev.html#activitysim.estimation.larch.location_choice.LocationChoiceData.model_selector">[2]</a>
 </li>
       <li><a href="dev-guide/components/atwork_subtour_destination.html#activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings.MODELED_SIZE_TABLE">MODELED_SIZE_TABLE (activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings attribute)</a>
@@ -2525,8 +2605,6 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.MODELED_SIZE_TABLE">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.models">models (activitysim.core.configuration.Settings attribute)</a>
 </li>
       <li>
@@ -2622,6 +2700,8 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core.html#activitysim.core.logit.AltsContext.n_alts_to_cover_max_id">n_alts_to_cover_max_id (activitysim.core.logit.AltsContext property)</a>
+</li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.DigitalEncoding.html#activitysim.core.configuration.DigitalEncoding.name">name (activitysim.core.configuration.DigitalEncoding attribute)</a>
 
       <ul>
@@ -2633,6 +2713,8 @@
 </li>
       </ul></li>
       <li><a href="dev-guide/components/disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.NEAREST_METHOD">NEAREST_METHOD (activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings attribute)</a>
+</li>
+      <li><a href="dev-guide/components/disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.NEAREST_ZONE_SKIM">NEAREST_ZONE_SKIM (activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings attribute)</a>
 </li>
       <li><a href="core.html#activitysim.core.logit.Nest">Nest (class in activitysim.core.logit)</a>
 </li>
@@ -2656,6 +2738,8 @@
         <li><a href="dev-guide/components/mandatory_tour_frequency.html#activitysim.abm.models.mandatory_tour_frequency.MandatoryTourFrequencySettings.NESTS">(activitysim.abm.models.mandatory_tour_frequency.MandatoryTourFrequencySettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.NESTS">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.NESTS">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.NESTS">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
@@ -2706,6 +2790,8 @@
         <li><a href="dev-guide/components/mandatory_tour_frequency.html#activitysim.abm.models.mandatory_tour_frequency.MandatoryTourFrequencySettings.nests_are_for_nl">(activitysim.abm.models.mandatory_tour_frequency.MandatoryTourFrequencySettings class method)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.nests_are_for_nl">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings class method)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.nests_are_for_nl">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings class method)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.nests_are_for_nl">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings class method)</a>
 </li>
@@ -2860,6 +2946,10 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.park_and_ride_lot_choice">park_and_ride_lot_choice() (in module activitysim.abm.models.park_and_ride_lot_choice)</a>
+</li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.PARK_AND_RIDE_MODES">PARK_AND_RIDE_MODES (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
       <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.parking_destination_simulate">parking_destination_simulate() (in module activitysim.abm.models.parking_location_choice)</a>
 </li>
       <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.parking_location">parking_location() (in module activitysim.abm.models.parking_location_choice)</a>
@@ -2934,6 +3024,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.preprocessor">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.preprocessor">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.preprocessor">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -3040,6 +3132,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.html#activitysim.core.random.SimpleChannel.random_for_df">random_for_df() (activitysim.core.random.SimpleChannel method)</a>
 </li>
+      <li><a href="core.html#activitysim.core.random.SimpleChannel.random_for_df_stable_alt_positions">random_for_df_stable_alt_positions() (activitysim.core.random.SimpleChannel method)</a>
+</li>
       <li><a href="core.html#activitysim.core.assign.read_assignment_spec">read_assignment_spec() (in module activitysim.core.assign)</a>
 </li>
       <li><a href="core.html#activitysim.core.mp_tasks.read_breadcrumbs">read_breadcrumbs() (in module activitysim.core.mp_tasks)</a>
@@ -3102,12 +3196,12 @@
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.registered_tables.html#activitysim.core.workflow.State.registered_tables">registered_tables() (activitysim.core.workflow.State method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.html#activitysim.core.util.reindex">reindex() (in module activitysim.core.util)</a>
 </li>
       <li><a href="core.html#activitysim.core.util.reindex_i">reindex_i() (in module activitysim.core.util)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.html#activitysim.core.timetable.TimeTable.remaining_periods_available">remaining_periods_available() (activitysim.core.timetable.TimeTable method)</a>
 </li>
       <li><a href="estimation.html#activitysim.estimation.larch.general.remove_apostrophes">remove_apostrophes() (in module activitysim.estimation.larch.general)</a>, <a href="users-guide/estimation-mode/larch-api.html#activitysim.estimation.larch.general.remove_apostrophes">[1]</a>, <a href="users-guide/model_dev.html#activitysim.estimation.larch.general.remove_apostrophes">[2]</a>
@@ -3123,6 +3217,10 @@
       <li><a href="core.html#activitysim.core.logit.report_bad_choices">report_bad_choices() (in module activitysim.core.logit)</a>
 </li>
       <li><a href="dev-guide/components/vehicle_type_choice.html#activitysim.abm.models.vehicle_type_choice.VehicleTypeChoiceSettings.REQUIRE_DATA_FOR_ALL_ALTS">REQUIRE_DATA_FOR_ALL_ALTS (activitysim.abm.models.vehicle_type_choice.VehicleTypeChoiceSettings attribute)</a>
+</li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.RESAMPLE_STRATEGY">RESAMPLE_STRATEGY (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
+      <li><a href="core.html#activitysim.core.interaction_sample.resolve_sample_method">resolve_sample_method() (in module activitysim.core.interaction_sample)</a>
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.checkpoint.restore.html#activitysim.core.workflow.State.checkpoint.restore">restore() (activitysim.core.workflow.State.checkpoint method)</a>
 </li>
@@ -3154,9 +3252,17 @@
         <li><a href="cli.html#activitysim.cli.run.run">(in module activitysim.cli.run)</a>, <a href="users-guide/ways_to_run.html#activitysim.cli.run.run">[1]</a>
 </li>
       </ul></li>
+      <li><a href="dev-guide/components/atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.run_atwork_pnr_lot_choice">run_atwork_pnr_lot_choice (activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings attribute)</a>
+
+      <ul>
+        <li><a href="dev-guide/components/tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.run_atwork_pnr_lot_choice">(activitysim.abm.models.tour_mode_choice.TourModeComponentSettings attribute)</a>
+</li>
+      </ul></li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.tracing.run_id.html#activitysim.core.workflow.State.tracing.run_id">run_id (activitysim.core.workflow.State.tracing attribute)</a>
 </li>
       <li><a href="core.html#activitysim.core.mp_tasks.run_multiprocess">run_multiprocess() (in module activitysim.core.mp_tasks)</a>
+</li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.run_park_and_ride_lot_choice">run_park_and_ride_lot_choice() (in module activitysim.abm.models.park_and_ride_lot_choice)</a>
 </li>
       <li><a href="core.html#activitysim.core.mp_tasks.run_simulation">run_simulation() (in module activitysim.core.mp_tasks)</a>
 </li>
@@ -3172,6 +3278,8 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.sample_method">sample_method (activitysim.core.configuration.Settings attribute)</a>
+</li>
       <li><a href="dev-guide/components/atwork_subtour_destination.html#activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings.SAMPLE_SIZE">SAMPLE_SIZE (activitysim.abm.models.atwork_subtour_destination.TourLocationComponentSettings attribute)</a>
 
       <ul>
@@ -3421,6 +3529,8 @@
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.source_file_paths">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
 </li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.source_file_paths">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.source_file_paths">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/stop_frequency.html#activitysim.abm.models.stop_frequency.StopFrequencySettings.source_file_paths">(activitysim.abm.models.stop_frequency.StopFrequencySettings attribute)</a>
@@ -3488,6 +3598,8 @@
         <li><a href="dev-guide/components/non_mandatory_destination.html#activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings.SPEC">(activitysim.abm.models.non_mandatory_destination.TourLocationComponentSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.SPEC">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings attribute)</a>
+</li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.SPEC">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.SPEC">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings attribute)</a>
 </li>
@@ -3642,13 +3754,17 @@
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.tracing.trace_interaction_eval_results.html#activitysim.core.workflow.State.tracing.trace_interaction_eval_results">trace_interaction_eval_results() (activitysim.core.workflow.State.tracing method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.trace_memory_info.html#activitysim.core.workflow.State.trace_memory_info">trace_memory_info() (activitysim.core.workflow.State method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.trace_od">trace_od (activitysim.core.configuration.Settings attribute)</a>
 </li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.TRACE_PNR_CAPACITIES_PER_ITERATION">TRACE_PNR_CAPACITIES_PER_ITERATION (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
+</li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.tracing.trace_targets.html#activitysim.core.workflow.State.tracing.trace_targets">trace_targets() (activitysim.core.workflow.State.tracing method)</a>
+</li>
+      <li><a href="core.html#activitysim.core.util.traceable_id_columns">traceable_id_columns() (in module activitysim.core.util)</a>
 </li>
       <li><a href="dev-guide/_generated/activitysim.core.workflow.State.tracing.traceable_table_ids.html#activitysim.core.workflow.State.tracing.traceable_table_ids">traceable_table_ids (activitysim.core.workflow.State.tracing attribute)</a>
 </li>
@@ -3663,6 +3779,8 @@
       <li><a href="dev-guide/components/transit_pass_ownership.html#activitysim.abm.models.transit_pass_ownership.transit_pass_ownership">transit_pass_ownership() (in module activitysim.abm.models.transit_pass_ownership)</a>
 </li>
       <li><a href="dev-guide/components/transit_pass_subsidy.html#activitysim.abm.models.transit_pass_subsidy.transit_pass_subsidy">transit_pass_subsidy() (in module activitysim.abm.models.transit_pass_subsidy)</a>
+</li>
+      <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.TRANSIT_SKIMS_FOR_ELIGIBILITY">TRANSIT_SKIMS_FOR_ELIGIBILITY (activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings attribute)</a>
 </li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.treat_warnings_as_errors">treat_warnings_as_errors (activitysim.core.configuration.Settings attribute)</a>
 </li>
@@ -3739,6 +3857,8 @@
 </li>
         <li><a href="dev-guide/components/non_mandatory_tour_frequency.html#activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings.update_sharrow_skip">(activitysim.abm.models.non_mandatory_tour_frequency.NonMandatoryTourFrequencySettings class method)</a>
 </li>
+        <li><a href="dev-guide/components/park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.update_sharrow_skip">(activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings class method)</a>
+</li>
         <li><a href="dev-guide/components/parking_location_choice.html#activitysim.abm.models.parking_location_choice.ParkingLocationSettings.update_sharrow_skip">(activitysim.abm.models.parking_location_choice.ParkingLocationSettings class method)</a>
 </li>
         <li><a href="dev-guide/components/school_escorting.html#activitysim.abm.models.school_escorting.SchoolEscortSettings.update_sharrow_skip">(activitysim.abm.models.school_escorting.SchoolEscortSettings class method)</a>
@@ -3776,6 +3896,8 @@
 </li>
       <li><a href="dev-guide/components/trip_scheduling_probabilistic.html#activitysim.abm.models.trip_scheduling.update_tour_earliest">update_tour_earliest() (in module activitysim.abm.models.trip_scheduling)</a>
 </li>
+      <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.use_explicit_error_terms">use_explicit_error_terms (activitysim.core.configuration.Settings attribute)</a>
+</li>
       <li><a href="users-guide/_generated/activitysim.core.configuration.Settings.html#activitysim.core.configuration.Settings.use_shadow_pricing">use_shadow_pricing (activitysim.core.configuration.Settings attribute)</a>
 </li>
       <li><a href="core.html#activitysim.core.logit.utils_to_logsums">utils_to_logsums() (in module activitysim.core.logit)</a>
@@ -3789,6 +3911,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="users-guide/estimation-mode/asim-est.html#activitysim.core.estimation.EstimationConfig.validate_estimation_table_types">validate_estimation_table_types() (activitysim.core.estimation.EstimationConfig method)</a>
+</li>
+      <li><a href="core.html#activitysim.core.logit.validate_utils">validate_utils() (in module activitysim.core.logit)</a>
 </li>
       <li><a href="dev-guide/components/input_checker.html#activitysim.abm.models.input_checker.validate_with_pandera">validate_with_pandera() (in module activitysim.abm.models.input_checker)</a>
 </li>
@@ -3938,7 +4062,7 @@
       
         <div class="footer-item"><!-- This will display the version of the docs -->
 <p class="last-updated">
-ActivitySim 1000.dev3509+g3bcc811bc, documentation last updated Jun 23, 2026.<br/>
+ActivitySim 1000.dev3530+g26382c34d, documentation last updated Oct 19, 2026.<br/>
 </p></div>
       
         <div class="footer-item">

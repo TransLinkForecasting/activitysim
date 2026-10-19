@@ -54,7 +54,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://translinkforecasting.github.io/activitysim/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1000.dev3509.g3bcc811bc';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1000.dev3530.g26382c34d';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -64,8 +64,8 @@
     <link rel="prev" title="LogitNestSpec" href="../_generated/activitysim.core.configuration.logit.LogitNestSpec.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1000.dev3509.g3bcc811bc" />
-    <meta name="docbuild:last-update" content="Jun 23, 2026"/>
+  <meta name="docsearch:version" content="1000.dev3530.g26382c34d" />
+    <meta name="docbuild:last-update" content="Oct 19, 2026"/>
   </head>
   
   
@@ -356,6 +356,7 @@
 <li class="toctree-l2"><a class="reference internal" href="trip_destination.html">Trip Destination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="work_from_home.html">Work from Home</a></li>
 <li class="toctree-l2"><a class="reference internal" href="work_location_choice.html">Work Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="park_and_ride_lot_choice.html">Park-and-Ride Lot Choice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tour_mode_choice.html">Tour Mode Choice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="atwork_subtour_frequency.html">At-work Subtours Frequency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="atwork_subtour_destination.html">At-work Subtours Destination Choice</a></li>
@@ -373,6 +374,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../core.html">Core Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explicit-error-terms.html">Explicit Error Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sampling-methods.html">Sampling Methods for Interaction Sample</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../benchmarking.html">Benchmarking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changes.html">Change Log</a></li>
@@ -987,11 +990,13 @@
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.KEEP_COLS"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.KEEP_COLS</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.MERGE_ON"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.MERGE_ON</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.NEAREST_METHOD"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.NEAREST_METHOD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.NEAREST_ZONE_SKIM"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.NEAREST_ZONE_SKIM</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.ORIGIN_SAMPLE_METHOD"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.ORIGIN_SAMPLE_METHOD</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.ORIGIN_SAMPLE_SIZE"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.ORIGIN_SAMPLE_SIZE</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.ORIGIN_WEIGHTING_COLUMN"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.ORIGIN_WEIGHTING_COLUMN</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.add_size_tables"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.add_size_tables</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.annotate_proto_tables"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.annotate_proto_tables</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.compute_settings"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.compute_settings</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.explicit_chunk"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.explicit_chunk</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.postprocess_proto_tables"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.postprocess_proto_tables</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="disaggregate_accessibility.html#activitysim.abm.models.disaggregate_accessibility.DisaggregateAccessibilitySettings.suffixes"><code class="docutils literal notranslate"><span class="pre">DisaggregateAccessibilitySettings.suffixes</span></code></a></li>
@@ -1281,8 +1286,57 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="park_and_ride_lot_choice.html">Park-and-Ride Lot Choice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="park_and_ride_lot_choice.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="park_and_ride_lot_choice.html#configuring-an-implementation">Configuring an Implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="park_and_ride_lot_choice.html#skims-and-utility-expressions">Skims and Utility Expressions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="park_and_ride_lot_choice.html#capacity-iteration">Capacity Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="park_and_ride_lot_choice.html#logsums-and-at-work-subtours">Logsums and At-Work Subtours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="park_and_ride_lot_choice.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.ACCEPTED_TOLERANCE"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.ACCEPTED_TOLERANCE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.CHOOSER_FILTER_EXPR"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.CHOOSER_FILTER_EXPR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.COEFFICIENTS"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.COEFFICIENTS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.CONSTANTS"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.CONSTANTS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.ITERATE_WITH_TOUR_MODE_CHOICE"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.ITERATE_WITH_TOUR_MODE_CHOICE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.LANDUSE_COL_FOR_PNR_ELIGIBLE_DEST"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.LANDUSE_COL_FOR_PNR_ELIGIBLE_DEST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.LANDUSE_PNR_SPACES_COLUMN"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.LANDUSE_PNR_SPACES_COLUMN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.LOGIT_TYPE"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.LOGIT_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.MAX_ITERATIONS"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.MAX_ITERATIONS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.NESTS"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.NESTS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.PARK_AND_RIDE_MODES"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.PARK_AND_RIDE_MODES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.RESAMPLE_STRATEGY"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.RESAMPLE_STRATEGY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.SPEC"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.SPEC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.TRACE_PNR_CAPACITIES_PER_ITERATION"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.TRACE_PNR_CAPACITIES_PER_ITERATION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.TRANSIT_SKIMS_FOR_ELIGIBILITY"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.TRANSIT_SKIMS_FOR_ELIGIBILITY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.alts_preprocessor"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.alts_preprocessor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_households"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.annotate_households</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_persons"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.annotate_persons</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_tours"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.annotate_tours</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_trips"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.annotate_trips</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.annotate_vehicles"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.annotate_vehicles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.compute_settings"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.compute_settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.explicit_chunk"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.explicit_chunk</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.preprocessor"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.preprocessor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.source_file_paths"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.source_file_paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.nests_are_for_nl"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.nests_are_for_nl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.ParkAndRideLotChoiceSettings.update_sharrow_skip"><code class="docutils literal notranslate"><span class="pre">ParkAndRideLotChoiceSettings.update_sharrow_skip</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="park_and_ride_lot_choice.html#implementation">Implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.park_and_ride_lot_choice"><code class="docutils literal notranslate"><span class="pre">park_and_ride_lot_choice()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="park_and_ride_lot_choice.html#activitysim.abm.models.park_and_ride_lot_choice.run_park_and_ride_lot_choice"><code class="docutils literal notranslate"><span class="pre">run_park_and_ride_lot_choice()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tour_mode_choice.html">Tour Mode Choice</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tour_mode_choice.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tour_mode_choice.html#park-and-ride">Park-and-Ride</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tour_mode_choice.html#configuration">Configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.COEFFICIENTS"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.COEFFICIENTS</span></code></a></li>
@@ -1301,8 +1355,11 @@
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.annotate_trips"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.annotate_trips</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.annotate_vehicles"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.annotate_vehicles</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.compute_settings"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.compute_settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.explicit_chunk"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.explicit_chunk</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.include_pnr_for_logsums"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.include_pnr_for_logsums</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.nontour_preprocessor"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.nontour_preprocessor</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.preprocessor"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.preprocessor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.run_atwork_pnr_lot_choice"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.run_atwork_pnr_lot_choice</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.source_file_paths"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.source_file_paths</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.nests_are_for_nl"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.nests_are_for_nl()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tour_mode_choice.html#activitysim.abm.models.tour_mode_choice.TourModeComponentSettings.update_sharrow_skip"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.update_sharrow_skip</span></code></a></li>
@@ -1465,8 +1522,11 @@
 <li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.annotate_trips"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.annotate_trips</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.annotate_vehicles"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.annotate_vehicles</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.compute_settings"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.compute_settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.explicit_chunk"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.explicit_chunk</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.include_pnr_for_logsums"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.include_pnr_for_logsums</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.nontour_preprocessor"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.nontour_preprocessor</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.preprocessor"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.preprocessor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.run_atwork_pnr_lot_choice"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.run_atwork_pnr_lot_choice</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.source_file_paths"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.source_file_paths</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.nests_are_for_nl"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.nests_are_for_nl()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="atwork_subtour_mode_choice.html#activitysim.abm.models.atwork_subtour_mode_choice.TourModeComponentSettings.update_sharrow_skip"><code class="docutils literal notranslate"><span class="pre">TourModeComponentSettings.update_sharrow_skip</span></code></a></li>
@@ -1594,6 +1654,7 @@
 <li class="toctree-l4"><a class="reference internal" href="trip_scheduling_choice.html#activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings.annotate_trips"><code class="docutils literal notranslate"><span class="pre">TripSchedulingChoiceSettings.annotate_trips</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_scheduling_choice.html#activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings.annotate_vehicles"><code class="docutils literal notranslate"><span class="pre">TripSchedulingChoiceSettings.annotate_vehicles</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_scheduling_choice.html#activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings.compute_settings"><code class="docutils literal notranslate"><span class="pre">TripSchedulingChoiceSettings.compute_settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="trip_scheduling_choice.html#activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings.explicit_chunk"><code class="docutils literal notranslate"><span class="pre">TripSchedulingChoiceSettings.explicit_chunk</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_scheduling_choice.html#activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings.preprocessor"><code class="docutils literal notranslate"><span class="pre">TripSchedulingChoiceSettings.preprocessor</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_scheduling_choice.html#activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings.source_file_paths"><code class="docutils literal notranslate"><span class="pre">TripSchedulingChoiceSettings.source_file_paths</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_scheduling_choice.html#activitysim.abm.models.trip_scheduling_choice.TripSchedulingChoiceSettings.nests_are_for_nl"><code class="docutils literal notranslate"><span class="pre">TripSchedulingChoiceSettings.nests_are_for_nl()</span></code></a></li>
@@ -1657,6 +1718,7 @@
 <li class="toctree-l4"><a class="reference internal" href="trip_mode_choice.html#activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings.annotate_trips"><code class="docutils literal notranslate"><span class="pre">TripModeChoiceSettings.annotate_trips</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_mode_choice.html#activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings.annotate_vehicles"><code class="docutils literal notranslate"><span class="pre">TripModeChoiceSettings.annotate_vehicles</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_mode_choice.html#activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings.compute_settings"><code class="docutils literal notranslate"><span class="pre">TripModeChoiceSettings.compute_settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="trip_mode_choice.html#activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings.explicit_chunk"><code class="docutils literal notranslate"><span class="pre">TripModeChoiceSettings.explicit_chunk</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_mode_choice.html#activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings.preprocessor"><code class="docutils literal notranslate"><span class="pre">TripModeChoiceSettings.preprocessor</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_mode_choice.html#activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings.source_file_paths"><code class="docutils literal notranslate"><span class="pre">TripModeChoiceSettings.source_file_paths</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="trip_mode_choice.html#activitysim.abm.models.trip_mode_choice.TripModeChoiceSettings.nests_are_for_nl"><code class="docutils literal notranslate"><span class="pre">TripModeChoiceSettings.nests_are_for_nl()</span></code></a></li>
@@ -1724,6 +1786,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="write_trip_matrices.html">Write Trip Matrices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="write_trip_matrices.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="write_trip_matrices.html#park-and-ride-legs">Park-and-Ride Legs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="write_trip_matrices.html#configuration">Configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="write_trip_matrices.html#activitysim.abm.models.trip_matrices.WriteTripMatricesSettings"><code class="docutils literal notranslate"><span class="pre">WriteTripMatricesSettings</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="write_trip_matrices.html#activitysim.abm.models.trip_matrices.WriteTripMatricesSettings.CONSTANTS"><code class="docutils literal notranslate"><span class="pre">WriteTripMatricesSettings.CONSTANTS</span></code></a></li>
@@ -1822,7 +1885,7 @@ section. See <a class="reference internal" href="../../development.html#models">
       
         <div class="footer-item"><!-- This will display the version of the docs -->
 <p class="last-updated">
-ActivitySim 1000.dev3509+g3bcc811bc, documentation last updated Jun 23, 2026.<br/>
+ActivitySim 1000.dev3530+g26382c34d, documentation last updated Oct 19, 2026.<br/>
 </p></div>
       
         <div class="footer-item">
