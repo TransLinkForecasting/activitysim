@@ -3,6 +3,7 @@ from __future__ import annotations
 # ActivitySim
 # See full license in LICENSE.txt.
 import logging
+import math
 from typing import Literal
 
 import numpy as np
@@ -11,6 +12,7 @@ import pandas as pd
 from activitysim.abm.models.util import logsums
 from activitysim.abm.models.util.park_and_ride_capacity import ParkAndRideCapacity
 from activitysim.core import (
+    chunk,
     config,
     estimation,
     expressions,
@@ -172,76 +174,61 @@ def return_no_choices(state, choosers: pd.DataFrame, original_index=None) -> pd.
     return pd.Series(data=-1, index=index)
 
 
-def run_park_and_ride_lot_choice(
+def _choosers_per_slice(
+    state: workflow.State, num_choosers: int, explicit_chunk_size: float
+) -> int:
+    """
+    Number of choosers to process at a time, following the explicit_chunk setting.
+
+    Uses the same rules as explicit chunking in `activitysim.core.chunk`: a fraction
+    below 1 is a share of all choosers, otherwise the value is the total number of
+    choosers per chunk across all processes. When explicit chunking is not active,
+    all choosers are processed together.
+    """
+    if (
+        state.settings.chunk_training_mode != chunk.MODE_EXPLICIT
+        or not explicit_chunk_size
+        or explicit_chunk_size < 0
+    ):
+        return num_choosers
+
+    if explicit_chunk_size < 1:
+        rows = math.ceil(num_choosers * explicit_chunk_size)
+    else:
+        num_processes = (
+            state.get_injectable("num_processes", 1)
+            if state.settings.multiprocess
+            else 1
+        )
+        rows = int(explicit_chunk_size / num_processes)
+
+    return min(max(rows, 1), num_choosers)
+
+
+def _choose_lots_for_choosers(
     state: workflow.State,
     choosers: pd.DataFrame,
     land_use: pd.DataFrame,
+    pnr_alts: pd.DataFrame,
     network_los: los.Network_LOS,
-    model_settings: ParkAndRideLotChoiceSettings | None = None,
-    choosers_dest_col_name: str = "destination",
-    choosers_origin_col_name: str = "home_zone_id",
-    estimator=None,
-    model_settings_file_name: str = "park_and_ride_lot_choice.yaml",
-    pnr_capacity_cls: ParkAndRideCapacity | None = None,
-    trace_label: str = "park_and_ride_lot_choice",
-) -> pd.Series:
+    model_settings: ParkAndRideLotChoiceSettings,
+    model_settings_file_name: str,
+    model_spec: pd.DataFrame,
+    locals_dict: dict,
+    choosers_dest_col_name: str,
+    choosers_origin_col_name: str,
+    estimator,
+    trace_label: str,
+) -> pd.Series | None:
     """
-    Run the park-and-ride lot choice model.
+    Choose park-and-ride lots for choosers (with a unique index).
 
-    Provides another entry point for the model which is useful for getting pnr locations while creating logsums.
+    Returns None if none of the choosers are eligible for park-and-ride.
     """
-
-    if model_settings is None:
-        model_settings = ParkAndRideLotChoiceSettings.read_settings_file(
-            state.filesystem,
-            model_settings_file_name,
-        )
-
-    spec = state.filesystem.read_model_spec(file_name=model_settings.SPEC)
-    coefficients = state.filesystem.read_model_coefficients(model_settings)
-    model_spec = simulate.eval_coefficients(state, spec, coefficients, estimator)
-    locals_dict = state.get_global_constants()
-    locals_dict.update(model_settings.CONSTANTS)
-
-    pnr_alts = land_use[land_use[model_settings.LANDUSE_PNR_SPACES_COLUMN] > 0]
-    pnr_alts["pnr_zone_id"] = pnr_alts.index.values
-
-    # if we are running with capacitated pnr lots, we need to flag the lots that are over-capacitated
-    if pnr_capacity_cls is not None:
-        pnr_alts["pnr_lot_full"] = pnr_capacity_cls.flag_capacitated_pnr_zones(pnr_alts)
-        # if there are no available pnr lots left, we return a series of -1
-        if (pnr_alts["pnr_lot_full"] == 1).all():
-            logger.info(
-                "All park-and-ride lots are full. Returning -1 as park-and-ride lot choice."
-            )
-            return pd.Series(data=-1, index=choosers.index)
-    else:
-        pnr_alts["pnr_lot_full"] = 0
-
-    original_index = None
-    if not choosers.index.is_unique:
-        # non-unique index will crash interaction_simulate
-        # so we need to reset the index and add it to ActivitySim's rng
-        # this happens while the disaggregate accessibility model is running pnr lot choice
-        original_index = choosers.index
-        oi_name = original_index.name
-        oi_name = oi_name if oi_name else "index"
-        choosers = choosers.reset_index(drop=False)
-        idx_multiplier = choosers.groupby(oi_name).size().max()
-        # round to the nearest 10's place
-        idx_multiplier = int(np.ceil(idx_multiplier / 10.0) * 10)
-        choosers.index = (
-            original_index * idx_multiplier + choosers.groupby(oi_name).cumcount()
-        )
-        choosers.index.name = oi_name + "_pnr_lot_choice"
-        state.get_rn_generator().add_channel("pnr_lot_choice", choosers)
-        assert (
-            choosers.index.is_unique
-        ), "The index of the choosers DataFrame must be unique after resetting the index."
-        assert len(choosers.index) == len(original_index), (
-            f"The length of the choosers DataFrame must be equal to the original index length:"
-            f" {len(choosers.index)} != {len(original_index)}"
-        )
+    # the alternatives and locals are changed by preprocessing, so do not carry
+    # those changes into the next slice of choosers
+    pnr_alts = pnr_alts.copy()
+    locals_dict = locals_dict.copy()
 
     trn_accessible_choosers = filter_chooser_to_transit_accessible_destinations(
         state,
@@ -254,7 +241,7 @@ def run_park_and_ride_lot_choice(
     )
 
     if trn_accessible_choosers.empty:
-        return return_no_choices(state, choosers, original_index)
+        return None
 
     add_periods = False if "in_period" in trn_accessible_choosers.columns else True
     skims = logsums.setup_skims(
@@ -303,7 +290,7 @@ def run_park_and_ride_lot_choice(
     )
 
     if trn_accessible_choosers.empty:
-        return return_no_choices(state, choosers, original_index)
+        return None
 
     # preprocess alternatives
     expressions.annotate_preprocessors(
@@ -336,7 +323,7 @@ def run_park_and_ride_lot_choice(
         estimator.write_choosers(trn_accessible_choosers)
         estimator.write_alternatives(pnr_alts)
 
-    choices = interaction_simulate(
+    return interaction_simulate(
         state,
         choosers=trn_accessible_choosers,
         alternatives=pnr_alts,
@@ -351,7 +338,134 @@ def run_park_and_ride_lot_choice(
         compute_settings=model_settings.compute_settings,
     )
 
-    choices = choices.reindex(choosers.index, fill_value=-1)
+
+def run_park_and_ride_lot_choice(
+    state: workflow.State,
+    choosers: pd.DataFrame,
+    land_use: pd.DataFrame,
+    network_los: los.Network_LOS,
+    model_settings: ParkAndRideLotChoiceSettings | None = None,
+    choosers_dest_col_name: str = "destination",
+    choosers_origin_col_name: str = "home_zone_id",
+    estimator=None,
+    model_settings_file_name: str = "park_and_ride_lot_choice.yaml",
+    pnr_capacity_cls: ParkAndRideCapacity | None = None,
+    trace_label: str = "park_and_ride_lot_choice",
+) -> pd.Series:
+    """
+    Run the park-and-ride lot choice model.
+
+    Provides another entry point for the model which is useful for getting pnr locations while creating logsums.
+    """
+
+    if model_settings is None:
+        model_settings = ParkAndRideLotChoiceSettings.read_settings_file(
+            state.filesystem,
+            model_settings_file_name,
+        )
+
+    spec = state.filesystem.read_model_spec(file_name=model_settings.SPEC)
+    coefficients = state.filesystem.read_model_coefficients(model_settings)
+    model_spec = simulate.eval_coefficients(state, spec, coefficients, estimator)
+    locals_dict = state.get_global_constants()
+    locals_dict.update(model_settings.CONSTANTS)
+
+    pnr_alts = land_use[land_use[model_settings.LANDUSE_PNR_SPACES_COLUMN] > 0]
+    pnr_alts["pnr_zone_id"] = pnr_alts.index.values
+
+    # if we are running with capacitated pnr lots, we need to flag the lots that are over-capacitated
+    if pnr_capacity_cls is not None:
+        pnr_alts["pnr_lot_full"] = pnr_capacity_cls.flag_capacitated_pnr_zones(pnr_alts)
+        # if there are no available pnr lots left, we return a series of -1
+        if (pnr_alts["pnr_lot_full"] == 1).all():
+            logger.info(
+                "All park-and-ride lots are full. Returning -1 as park-and-ride lot choice."
+            )
+            return pd.Series(data=-1, index=choosers.index)
+    else:
+        pnr_alts["pnr_lot_full"] = 0
+
+    original_index = None
+    unique_index = None
+    if not choosers.index.is_unique:
+        # non-unique index will crash interaction_simulate
+        # so we need a unique index that is registered in ActivitySim's rng
+        # this happens while the disaggregate accessibility model is running pnr lot choice
+        # and while location choice logsums are computed.
+        # The unique index is computed once for the whole table so that random draws do not
+        # depend on how the choosers are sliced below; only the index is built up front
+        # (not a copy of the chooser table) to keep memory low.
+        original_index = choosers.index
+        oi_name = original_index.name
+        oi_name = oi_name if oi_name else "index"
+        by_index = choosers.groupby(level=0)
+        idx_multiplier = by_index.size().max()
+        # round to the nearest 10's place
+        idx_multiplier = int(np.ceil(idx_multiplier / 10.0) * 10)
+        unique_index = pd.Index(
+            original_index.values * idx_multiplier + by_index.cumcount().values,
+            name=oi_name + "_pnr_lot_choice",
+        )
+        state.get_rn_generator().add_channel(
+            "pnr_lot_choice", pd.DataFrame(index=unique_index)
+        )
+        assert (
+            unique_index.is_unique
+        ), "The index of the choosers DataFrame must be unique after resetting the index."
+        assert len(unique_index) == len(original_index), (
+            f"The length of the choosers DataFrame must be equal to the original index length:"
+            f" {len(unique_index)} != {len(original_index)}"
+        )
+
+    # Everything from the transit eligibility filter through the lot choice itself
+    # is run on slices of the choosers.  Preprocessing and skim setup would otherwise
+    # create several copies of the entire chooser table, which is very large when
+    # computing location choice logsums (one row per person and sampled destination).
+    num_choosers = len(choosers)
+    if estimator is None:
+        rows_per_slice = _choosers_per_slice(
+            state, num_choosers, model_settings.explicit_chunk
+        )
+    else:
+        # estimation writes the choosers once, so keep them together
+        rows_per_slice = num_choosers
+
+    slice_choices = []
+    for start in range(0, max(num_choosers, 1), max(rows_per_slice, 1)):
+        stop = min(start + rows_per_slice, num_choosers)
+        if unique_index is not None:
+            chooser_slice = choosers.iloc[start:stop].reset_index(drop=False)
+            chooser_slice.index = unique_index[start:stop]
+        elif rows_per_slice >= num_choosers:
+            chooser_slice = choosers
+        else:
+            chooser_slice = choosers.iloc[start:stop].copy()
+
+        slice_result = _choose_lots_for_choosers(
+            state,
+            choosers=chooser_slice,
+            land_use=land_use,
+            pnr_alts=pnr_alts,
+            network_los=network_los,
+            model_settings=model_settings,
+            model_settings_file_name=model_settings_file_name,
+            model_spec=model_spec,
+            locals_dict=locals_dict,
+            choosers_dest_col_name=choosers_dest_col_name,
+            choosers_origin_col_name=choosers_origin_col_name,
+            estimator=estimator,
+            trace_label=trace_label,
+        )
+        if slice_result is not None:
+            slice_choices.append(slice_result)
+
+    if not slice_choices:
+        return return_no_choices(state, choosers, original_index)
+
+    choices = pd.concat(slice_choices)
+    choices = choices.reindex(
+        choosers.index if unique_index is None else unique_index, fill_value=-1
+    )
 
     if original_index is not None:
         # set the choices index back to the original index

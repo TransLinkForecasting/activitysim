@@ -393,6 +393,104 @@ coef_capacity,-3.0,F
     assert choices.to_dict() == {100: 1, 101: 2, 102: 1}
 
 
+def _run_pnr_with_slicing(
+    monkeypatch, state, network_los, model_settings, land_use, choosers, explicit_chunk
+):
+    """Run lot choice with the given explicit_chunk, returning choices and slice count."""
+    calls = []
+    original = pnr_lot_choice._choose_lots_for_choosers
+
+    def counting_choose(*args, **kwargs):
+        calls.append(len(kwargs["choosers"]))
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(pnr_lot_choice, "_choose_lots_for_choosers", counting_choose)
+    model_settings.explicit_chunk = explicit_chunk
+    state.settings.chunk_training_mode = "explicit" if explicit_chunk else "disabled"
+
+    choices = pnr_lot_choice.run_park_and_ride_lot_choice(
+        state=state,
+        choosers=choosers.copy(),
+        land_use=land_use,
+        network_los=network_los,
+        model_settings=model_settings,
+    )
+    return choices, calls
+
+
+@pytest.mark.parametrize("unique_index", [False, True])
+def test_run_pnr_slicing_does_not_change_choices(
+    monkeypatch, state, network_los, model_settings_base, unique_index
+):
+    """Choosing lots in slices of choosers gives exactly the same choices as all at once."""
+    model_settings_base.LANDUSE_COL_FOR_PNR_ELIGIBLE_DEST = "pnr_eligible"
+    land_use = pd.DataFrame(
+        {"pnr_spaces": [10, 20], "pnr_eligible": [True, True]},
+        index=pd.Index([1, 2], name="zone_id"),
+    )
+
+    n = 50
+    if unique_index:
+        index = pd.Index(np.arange(100, 100 + n), name="tour_id")
+    else:
+        # repeated ids, like the person x sampled destination rows of location logsums
+        index = pd.Index(
+            np.repeat(np.arange(100, 120), [2, 3, 1, 4] * 5)[:n], name="person_id"
+        )
+        assert len(index) == n and not index.is_unique
+    choosers = pd.DataFrame(
+        {
+            "destination": np.where(np.arange(n) % 3 == 0, 1, 2),
+            "home_zone_id": 1,
+            "in_period": 1,
+        },
+        index=index,
+    )
+
+    rng = state.get_rn_generator()
+    rng.begin_step("test_run_pnr_slicing_does_not_change_choices")
+    if unique_index:
+        rng.add_channel("tours", choosers)
+
+    expected, calls = _run_pnr_with_slicing(
+        monkeypatch, state, network_los, model_settings_base, land_use, choosers, 0
+    )
+    assert len(calls) == 1
+    # equal utilities, so lots are picked at random and slicing would show up as a difference
+    assert expected.nunique() == 2
+
+    if unique_index:
+        rng.reset_offsets_for_df(choosers)
+
+    sliced, calls = _run_pnr_with_slicing(
+        monkeypatch, state, network_los, model_settings_base, land_use, choosers, 8
+    )
+    rng.end_step("test_run_pnr_slicing_does_not_change_choices")
+
+    assert calls == [8, 8, 8, 8, 8, 8, 2]
+    pd.testing.assert_series_equal(sliced, expected)
+    assert sliced.index.equals(choosers.index)
+
+
+def test_choosers_per_slice_follows_explicit_chunk_rules(state):
+    """Slice sizes follow the same rules as explicit chunking in the chunk module."""
+    per_slice = pnr_lot_choice._choosers_per_slice
+
+    state.settings.chunk_training_mode = "disabled"
+    assert per_slice(state, 1000, 100) == 1000
+
+    state.settings.chunk_training_mode = "explicit"
+    assert per_slice(state, 1000, 0) == 1000
+    assert per_slice(state, 1000, 100) == 100
+    assert per_slice(state, 1000, 5000) == 1000
+    assert per_slice(state, 1000, 0.25) == 250
+
+    state.settings.multiprocess = True
+    state.add_injectable("num_processes", 4)
+    assert per_slice(state, 1000, 100) == 25
+    assert per_slice(state, 1000, 2) == 1
+
+
 def test_capacity_scales_and_aggregates_choices(state):
     """Scales lot capacities by sample rate and aggregates occupancy by chosen lot."""
     land_use = pd.DataFrame(
